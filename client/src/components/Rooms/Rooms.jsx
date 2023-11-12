@@ -7,7 +7,7 @@ const Rooms = () => {
     useEffect(()=>{
         fetch("rooms.json").then(res=>res.json()).then(data=> setRooms(data))
     },[])
-    console.log(rooms)
+
     return(
       <Container>
           <div className="grid  grid-cols-1 gap-4 md:gap-6 lg:gap-8 md:grid-cols-3 lg:grid-cols-4">
