@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 const RoomCard = ({room}) => {
     return (
       <div className='col-span-1 cursor-pointer group'>
@@ -34,7 +35,7 @@ const RoomCard = ({room}) => {
           </div>
           <div className='font-semibold text-lg'>{room.title}</div>
           <div className='font-light text-neutral-500'>
-            5 nights . June 19 - 26
+            5 nights 
           </div>
           <div className='flex flex-row items-center gap-1'>
             <div className='font-semibold'>$ {room.price}</div>
@@ -45,4 +46,7 @@ const RoomCard = ({room}) => {
     )
   }
   
+  RoomCard.propTypes = {
+    room:PropTypes.object,
+  }
   export default RoomCard
