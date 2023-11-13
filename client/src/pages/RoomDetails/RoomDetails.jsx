@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import {useParams} from "react-router-dom"
 import Loader from "../../components/Shared/Loader"
+import Container from "../../components/Shared/Container"
+import { Helmet } from "react-helmet-async"
 const RoomDetails = () => {
     const {id} = useParams()
     const [room, setRoom] = useState([])
@@ -18,8 +20,10 @@ const RoomDetails = () => {
       return <Loader/>
     }
     return(
-        <div>
+        <Container>
+          <Helmet><title>{room?.title}</title></Helmet>
              <p> {room?.title} </p>
-        </div>
+           
+        </Container>
     )}
 export default RoomDetails;

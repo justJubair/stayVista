@@ -22,11 +22,12 @@ const CategoryBox = ({ label, icon: Icon }) => {
     <div
       onClick={handleCategory}
       className={`${
+        
         category === label ? "border-b-2 border-black text-gray-800" : undefined
       } text-gray-500 flex flex-col gap-2  pb-2 items-center justify-center hover:cursor-pointer`}
     >
       <span>{<Icon size={26} />}</span>
-      <p className="font-bold">{label}</p>
+           <p className="font-bold">{label}</p>
     </div>
   );
 };
