@@ -19,7 +19,7 @@ const Rooms = () => {
             
           })
     },[category])
-    console.log(rooms)
+   
     return(
       <Container>
           {
@@ -27,7 +27,7 @@ const Rooms = () => {
             {
                rooms.map(room=> <RoomCard key={room._id} room={room} />)
             }
-       </div> : <Heading title="No Room Availlable In This Category" subtitle="Please Select Other Categories" center="center"/>
+       </div> : <div className="flex items-center justify-center min-h-[calc(100vh-350px)]"><Heading title="No Room Availlable In This Category" subtitle="Please Select Other Categories" center="center"/></div>
           }
          
       </Container>
