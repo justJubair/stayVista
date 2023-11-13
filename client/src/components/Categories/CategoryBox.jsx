@@ -8,13 +8,14 @@ const CategoryBox = ({ label, icon:Icon }) => {
     let currentQuery = {}
     if(params){
       currentQuery= qs.parse(params.toString())
+    }
       const updateQuery = {...currentQuery, category:label}
       const url = qs.stringifyUrl({
         url: "/",
         query:updateQuery
       })
       navigate(url)
-    }
+    
   }
   const category = params.get("category")
  
