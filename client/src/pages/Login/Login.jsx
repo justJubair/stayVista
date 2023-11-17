@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import useAuth from '../../hooks/useAuth'
 import { getToken, saveUser } from '../../utils/auth'
@@ -8,6 +8,8 @@ import { TbFidgetSpinner } from "react-icons/tb";
 const Login = () => {
   const {signIn,signInWithGoogle, loading} = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
+  console.log(location.state)
   // form submit handler
   const handleSubmit = async e=>{
     e.preventDefault()
@@ -23,7 +25,7 @@ const Login = () => {
     // get token
     await getToken(res?.user?.email)
     toast.success("Sign successful")
-    navigate("/")
+    navigate(location?.state.from ? location?.state.from : "/")
     }
     catch(error){
       console.log(error)
@@ -42,8 +44,8 @@ const Login = () => {
      
      // get token
      await getToken(res?.user?.email)
-     toast.success("Sign successful")
-     navigate("/")
+     toast.success("Login successful")
+     navigate(location?.state.from ? location?.state.from : "/")
 
     }
     catch(error){
