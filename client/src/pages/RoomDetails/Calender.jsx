@@ -2,10 +2,10 @@
 /* eslint-disable react/prop-types */
 import { DateRange } from "react-date-range";
 
-const DatePicker = ({ value, handleSelect }) => {
+const Calender = ({ value, handleSelect }) => {
   return <DateRange 
   rangeColors={["#F43F5E"]} 
   direction="vertical" />;
 };
 
-export default DatePicker;
+export default Calender;

@@ -32,15 +32,15 @@ const RoomDetails = () => {
       <Heading title={room?.title} subtitle={room?.location} />
       <div className="w-full my-6 md:h-[60vh] overflow-hidden rounded-xl">
         <img
-          className="w-full object-cover"
+          className="w-full h-full object-cover"
           src={room?.image}
           alt={room?.title}
         />
       </div>
       <div className="grid  items-start gap-4 grid-cols-1 md:grid-cols-7">
         <RoomInfo room={room} />
-        <div className="col-span-3 text-center order-first md:order-last">
-       <RoomReservation/>
+        <div className="col-span-3 order-first md:order-last">
+       <RoomReservation room={room}/>
         </div>
       </div>
     </Container>
