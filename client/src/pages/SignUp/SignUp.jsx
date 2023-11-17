@@ -4,11 +4,11 @@ import { imageUpload } from '../../utils/utils'
 import useAuth from '../../hooks/useAuth'
 import { getToken, saveUser } from '../../utils/auth'
 import toast from "react-hot-toast"
-
+import { TbFidgetSpinner } from "react-icons/tb";
 
 const SignUp = () => {
-  // eslint-disable-next-line no-unused-vars
-  const {createUser,signInWithGoogle, updateUserProfile} = useAuth()
+  
+  const {createUser,signInWithGoogle, updateUserProfile, loading} = useAuth()
   const navigate = useNavigate()
   // form submit handler
   const handleSubmit = async e=>{
@@ -38,6 +38,26 @@ const SignUp = () => {
       toast.error(error.message)
     }
   
+  }
+  const handleGoogleLogin = async()=>{ 
+    try{
+     
+       // create new user
+       const res = await signInWithGoogle()
+      
+     //  save user in the database
+       await saveUser(res?.user)
+     
+     // get token
+     await getToken(res?.user?.email)
+     toast.success("Sign successful")
+     navigate("/")
+
+    }
+    catch(error){
+      toast.error(error.message)
+    }
+
   }
  
   return (
@@ -116,7 +136,10 @@ const SignUp = () => {
               type='submit'
               className='bg-rose-500 w-full rounded-md py-3 text-white'
             >
-              Continue
+              {
+                loading ? <TbFidgetSpinner className='animate-spin m-auto'/> :"Continue"
+              }
+              
             </button>
           </div>
         </form>
@@ -127,7 +150,7 @@ const SignUp = () => {
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+        <div onClick={handleGoogleLogin} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
