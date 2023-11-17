@@ -1,8 +1,8 @@
-import axiosPublic from "./axios"
+import axiosPublic from "./axiosPublic"
 
 
 
-const saveUser = async(user)=>{
+export const saveUser = async(user)=>{
    
     const currentUser = {
         email: user?.email,
@@ -13,4 +13,8 @@ const saveUser = async(user)=>{
     return data
 }
 
-export default saveUser
+export const getToken = async(email)=>{
+    const {data} = await axiosPublic.post("/jwt", email)
+   
+    return data
+}

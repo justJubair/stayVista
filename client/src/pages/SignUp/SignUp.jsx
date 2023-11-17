@@ -1,12 +1,15 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { imageUpload } from '../../utils/utils'
 import useAuth from '../../hooks/useAuth'
-import saveUser from '../../utils/saveUser'
+import { getToken, saveUser } from '../../utils/auth'
+import toast from "react-hot-toast"
 
 
 const SignUp = () => {
+  // eslint-disable-next-line no-unused-vars
   const {createUser,signInWithGoogle, updateUserProfile} = useAuth()
+  const navigate = useNavigate()
   // form submit handler
   const handleSubmit = async e=>{
     e.preventDefault()
@@ -23,12 +26,16 @@ const SignUp = () => {
       // update user  name and image
       await updateUserProfile(name, imageData?.data?.display_url)
     //  save user in the database
-    const responseDB = await saveUser(res?.user)
-    console.log(responseDB)
+      await saveUser(res?.user)
     
+    // get token
+    await getToken(res?.user?.email)
+    toast.success("Sign successful")
+    navigate("/")
     }
     catch(error){
       console.log(error)
+      toast.error(error.message)
     }
   
   }

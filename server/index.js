@@ -20,7 +20,7 @@ app.use(cookieParser())
 app.use(morgan('dev'))
 const verifyToken = async (req, res, next) => {
   const token = req.cookies?.token
-  console.log(token)
+ 
   if (!token) {
     return res.status(401).send({ message: 'unauthorized access' })
   }
@@ -49,7 +49,7 @@ async function run() {
     // auth related api
     app.post('/jwt', async (req, res) => {
       const user = req.body
-      console.log('I need a new jwt', user)
+     
       const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: '365d',
       })
@@ -72,7 +72,7 @@ async function run() {
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
           })
           .send({ success: true })
-        console.log('Logout successful')
+       
       } catch (err) {
         res.status(500).send(err)
       }
@@ -85,7 +85,7 @@ async function run() {
       const query = { email: email }
       const options = { upsert: true }
       const isExist = await usersCollection.findOne(query)
-      console.log('User found?----->', isExist)
+      
       if (isExist) return res.send(isExist)
       const result = await usersCollection.updateOne(
         query,
