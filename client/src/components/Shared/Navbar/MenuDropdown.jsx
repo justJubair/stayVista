@@ -50,12 +50,18 @@ const MenuDropdown = () => {
             </Link>
 
         {
-          user ?   <button
+          user ?   <><div
           onClick={handleLogOut}
           className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
         >
           Logout
-        </button> :  <>
+        </div>
+        <Link
+              to='/dashboard'
+              className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+            >
+              Dashboard
+            </Link></> :  <>
         <Link
               to='/login'
               className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
