@@ -3,6 +3,8 @@ import {useParams} from "react-router-dom"
 import Loader from "../../components/Shared/Loader"
 import Container from "../../components/Shared/Container"
 import { Helmet } from "react-helmet-async"
+import Heading from "../../components/Shared/Heading/Heading"
+import RoomInfo from "./RoomInfo"
 const RoomDetails = () => {
     const {id} = useParams()
     const [room, setRoom] = useState([])
@@ -19,11 +21,19 @@ const RoomDetails = () => {
     if(isLoading){
       return <Loader/>
     }
+    console.log(room)
     return(
         <Container>
           <Helmet><title>{room?.title}</title></Helmet>
-             <p> {room?.title} </p>
-           
+            <Heading title={room?.title} subtitle={room?.location}/>
+            <div className="w-full my-6 md:h-[60vh] overflow-hidden rounded-xl">
+              <img className="w-full object-cover" src={room?.image} alt={room?.title} />
+            </div>
+            <div className="grid items-start gap-4 grid-cols-1 md:grid-cols-7">
+
+            <RoomInfo room={room}/>
+            <h1 className="col-span-3">calender</h1>
+            </div>
         </Container>
     )}
 export default RoomDetails;
