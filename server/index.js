@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser')
 const { MongoClient, ServerApiVersion } = require('mongodb')
 const jwt = require('jsonwebtoken')
 const morgan = require('morgan')
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 5000
 
 // middleware
 const corsOptions = {
@@ -43,6 +43,9 @@ const client = new MongoClient(process.env.DB_URI, {
 })
 async function run() {
   try {
+    // Database collection START
+    const usersCollection = client.db("stayVistaDB").collection("users") 
+    // Database collection ENDS
     // auth related api
     app.post('/jwt', async (req, res) => {
       const user = req.body

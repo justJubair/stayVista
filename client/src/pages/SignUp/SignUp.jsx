@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { imageUpload } from '../../utils/utils'
 import useAuth from '../../hooks/useAuth'
+import saveUser from '../../utils/saveUser'
 
 
 const SignUp = () => {
@@ -21,7 +22,9 @@ const SignUp = () => {
       const res = await createUser(email, password)
       // update user  name and image
       await updateUserProfile(name, imageData?.data?.display_url)
-     
+    //  save user in the database
+    const responseDB = await saveUser(res?.user)
+    console.log(responseDB)
     
     }
     catch(error){
