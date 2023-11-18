@@ -1,4 +1,5 @@
-import axiosPublic from "./axios"
+import axiosPublic from "./axiosPublic"
+
 
 export const  getAllRooms = async()=>{
     const res = await axiosPublic("/rooms")
