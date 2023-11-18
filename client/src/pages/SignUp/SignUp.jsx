@@ -1,10 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
-import { imageUpload } from '../../utils/utils'
+
 import useAuth from '../../hooks/useAuth'
-import { getToken, saveUser } from '../../utils/auth'
+
 import toast from "react-hot-toast"
 import { TbFidgetSpinner } from "react-icons/tb";
+import { getToken, saveUser } from '../../api/auth'
+import { imageUpload } from '../../utils/imageUpload';
 
 const SignUp = () => {
   

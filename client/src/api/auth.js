@@ -1,4 +1,4 @@
-import axiosPublic from "./axiosPublic"
+import axiosSecure from "./axiosSecure"
 
 
 
@@ -9,12 +9,12 @@ export const saveUser = async(user)=>{
         role: "admin",
         status: "Verified"
     }
-    const {data} = await axiosPublic.put(`/users/${user?.email}`, currentUser)
+    const {data} = await axiosSecure.put(`/users/${user?.email}`, currentUser)
     return data
 }
 
 export const getToken = async(email)=>{
-    const {data} = await axiosPublic.post("/jwt", email)
+    const {data} = await axiosSecure.post("/jwt", email)
    
-    return data
+   return data
 }
