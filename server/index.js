@@ -81,6 +81,23 @@ async function run() {
     })
     // jwt related api ENDS
 
+
+    // GET; users role
+    app.get("/usersRole", async(req,res)=>{
+      const email = req?.query.email
+      const query = {email: email}
+      const user = await usersCollection.findOne(query)
+      let role = {}
+      if(user?.role === "admin"){
+        role.role ="admin"
+      } else if(user?.role === "host"){
+        role.role= "host"
+      } else{
+        role.role="guest"
+      }
+      console.log(role)
+      res.send(role)
+    })
     // Save or modify user email, status in DB
     app.put('/users/:email', async (req, res) => {
       const email = req.params.email

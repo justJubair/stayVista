@@ -13,11 +13,15 @@ import Logo from '../../../components/Shared/Logo/Logo'
 import MenuItem from './MenuItem'
 import ToggleBtn from '../../../components/Button/ToggleBtn'
 import useAuth from '../../../hooks/useAuth';
+import useUserRole from '../../../hooks/useUserRole';
+
 
 const Sidebar = () => {
   const [toggle, setToggle] = useState(false)
   const [isActive, setActive] = useState(false)
   const {logOut} = useAuth()
+  const data = useUserRole()
+  console.log(data)
 
   //   For guest/host menu item toggle button
   const toggleHandler = event => {
