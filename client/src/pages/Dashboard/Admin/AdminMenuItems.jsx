@@ -5,8 +5,8 @@ const AdminMenuItems = () => {
         <>
             <MenuItem
                 icon={FaUserCog}
-                label='My Bookings'
-                address='myBookings'
+                label='Manage Users'
+                address='manageUser'
               />
         </>
     )}

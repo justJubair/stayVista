@@ -13,7 +13,7 @@ const useUserRole = ()=>{
         })
     },[user?.email])
    
-    return role
+    return [role]
 }
 
 export default useUserRole
