@@ -7,6 +7,7 @@ import { MdOutlineAddHomeWork } from "react-icons/md";
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
+import { BsFillHousesFill } from "react-icons/bs";
 import { BsGraphUp } from 'react-icons/bs'
 import Logo from '../../../components/Shared/Logo/Logo'
 import MenuItem from './MenuItem'
@@ -59,6 +60,7 @@ const Sidebar = () => {
             {/* If a user is host */}
             <ToggleBtn toggleHandler={toggleHandler} />
             <nav>
+                    {/* Menu Items */}
               <MenuItem
                 icon={BsGraphUp}
                 label='Statistics'
@@ -66,11 +68,16 @@ const Sidebar = () => {
               />
               <MenuItem
                 icon={MdOutlineAddHomeWork}
-                label='Add room'
-                address='/addRoom'
+                label='Add Room'
+                address='addRoom'
+              />
+              <MenuItem
+                icon={BsFillHousesFill}
+                label='My Listings'
+                address='myListings'
               />
 
-              {/* Menu Items */}
+          
             </nav>
           </div>
         </div>
