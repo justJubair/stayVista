@@ -6,9 +6,9 @@ import useUserRole from "../hooks/useUserRole";
 
 const HostRoute = ({children}) => {
     const {user, loading} = useAuth()
-    const [role, roleLoading] = useUserRole()
+    const [role, isLoading] = useUserRole()
  
-    if(loading || roleLoading){
+    if(loading || isLoading){
         return <Loader/>
     }
     if(user && role==="host"){
