@@ -5,17 +5,17 @@ import { getUserRole } from "../api/auth"
 const useUserRole = ()=>{
     const {user} = useAuth()
     const [role, setRole] = useState(null)
-    const [hostLoading, setHostLoading] = useState(true)
+    const [roleLoading, setRoleLoading] = useState(true)
     useEffect(()=>{
         getUserRole(user?.email)
         .then(res=>{
             
             setRole(res)
-            setHostLoading(false)
+            setRoleLoading(false)
         })
     },[user?.email])
-   
-    return [role, hostLoading]
+    console.log(role)
+    return [role, roleLoading]
 }
 
 export default useUserRole

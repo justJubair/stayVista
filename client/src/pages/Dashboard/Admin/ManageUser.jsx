@@ -1,7 +1,7 @@
-const ManageUser = () => {
+const ManageUsers = () => {
     return(
         <div>
              <p> HELLO I Am ManageUser </p>
         </div>
     )}
-export default ManageUser;
+export default ManageUsers;

@@ -4,16 +4,17 @@ import useAuth from "../hooks/useAuth";
 import {Navigate} from "react-router-dom"
 import useUserRole from "../hooks/useUserRole";
 
-const HostRoute = ({children}) => {
+const AdminRoute = ({children}) => {
     const {user, loading} = useAuth()
     const [role, roleLoading] = useUserRole()
- 
+    console.log(role)
+    console.log(loading, roleLoading)
     if(loading || roleLoading){
         return <Loader/>
     }
-    if(user && role==="host"){
+    if(user && role === "admin"){
         return children
     }
-    return <Navigate to="/dashboard" />
+    return <Navigate to="/dashboard"/>
 }
-export default HostRoute;
+export default AdminRoute;
