@@ -12,7 +12,7 @@ const useUserRole = ()=>{
             setRole(res)
         })
     },[user?.email])
-    console.log(role)
+   
     return role
 }
 

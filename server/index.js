@@ -95,7 +95,7 @@ async function run() {
       } else{
         role.role="guest"
       }
-      console.log(role)
+     
       res.send(role)
     })
     // Save or modify user email, status in DB
