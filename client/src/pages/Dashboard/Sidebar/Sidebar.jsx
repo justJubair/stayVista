@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MdOutlineAddHomeWork } from "react-icons/md";
+
 // Components
 
 
@@ -14,6 +14,7 @@ import MenuItem from './MenuItem'
 import ToggleBtn from '../../../components/Button/ToggleBtn'
 import useAuth from '../../../hooks/useAuth';
 import useUserRole from '../../../hooks/useUserRole';
+import HostMenuItems from '../Host/HostMenuItems';
 
 
 const Sidebar = () => {
@@ -65,24 +66,8 @@ const Sidebar = () => {
             {/* If a user is host */}
             <ToggleBtn toggleHandler={toggleHandler} />
             <nav>
-                    {/* Menu Items */}
-              <MenuItem
-                icon={BsGraphUp}
-                label='Statistics'
-                address='/dashboard'
-              />
-              <MenuItem
-                icon={MdOutlineAddHomeWork}
-                label='Add Room'
-                address='addRoom'
-              />
-              <MenuItem
-                icon={BsFillHousesFill}
-                label='My Listings'
-                address='myListings'
-              />
 
-          
+          <HostMenuItems/>
             </nav>
           </div>
         </div>
