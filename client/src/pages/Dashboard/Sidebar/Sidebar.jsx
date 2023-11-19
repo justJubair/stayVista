@@ -3,6 +3,7 @@ import { useState } from "react";
 import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
+import { BsGraphUp } from 'react-icons/bs'
 import Logo from "../../../components/Shared/Logo/Logo";
 import MenuItem from "./MenuItem";
 import ToggleBtn from "../../../components/Button/ToggleBtn";
@@ -61,6 +62,11 @@ const Sidebar = () => {
             {/* If a user is host */}
             {role === "host" && <ToggleBtn toggleHandler={toggleHandler} />}
             <nav>
+            <MenuItem
+                icon={BsGraphUp}
+                label='Statistics'
+                address='/dashboard'
+              />
               {role === "guest" && <GuestMenuItems />}
               {role === "host" ? (
                 toggle ? (
