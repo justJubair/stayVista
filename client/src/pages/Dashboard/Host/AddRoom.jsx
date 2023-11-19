@@ -3,6 +3,8 @@ import { useState } from "react";
 import AddRoomForm from "../../../components/Form/AddRoomForm";
 import useAuth from "../../../hooks/useAuth";
 import { imageUpload } from "../../../utils/imageUpload";
+import { saveARoom } from "../../../api/room";
+import { TbClipboardTypography } from "react-icons/tb";
 
 const AddRoom = () => {
   const [loading, setLoading] = useState(false)
@@ -15,6 +17,7 @@ const AddRoom = () => {
   });
 
   const handleSubmit = async (e) => {
+    setLoading(true)
     e.preventDefault();
     const form = e.target;
     const location = form.location.value;
@@ -25,7 +28,7 @@ const AddRoom = () => {
     const bathrooms = form.bathrooms.value;
     const description = form.description.value;
     const image = form.image.files[0];
-    const price = form.price.value;
+    const price = parseFloat(form.price.value)
     const to = dates.endDate;
     const from = dates.startDate;
     const host = {
@@ -48,6 +51,10 @@ const AddRoom = () => {
       host,
       image: imageData?.data?.display_url,
     };
+    const dbResponse = await saveARoom(newRoomData)
+    if(dbResponse.insertedId){
+        setLoading(false)
+    }
   };
 
   // handle date with react date range
