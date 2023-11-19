@@ -108,8 +108,8 @@ async function run() {
 
     // GET; host specific room data
     app.get("/rooms/:email", async(req,res)=>{
-      const email = req?.params.id;
-      const query = {"host.email": email}
+      const email = req?.params.email;
+      const query = {'host.email': email}
       const result = await roomsCollection.find(query).toArray()
       res.send(result)
     })

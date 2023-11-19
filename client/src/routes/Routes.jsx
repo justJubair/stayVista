@@ -40,11 +40,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "addroom",
-        element: <AddRoom />,
+        element: <PrivateRoute><AddRoom /></PrivateRoute>
       },
       {
         path: "myListings",
-        element: <MyListings/>
+        element: <PrivateRoute><MyListings/></PrivateRoute>
       }
     ],
   },
