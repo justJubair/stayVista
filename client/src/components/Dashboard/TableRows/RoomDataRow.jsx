@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import toast from "react-hot-toast"
 import Swal from 'sweetalert2'
 import axiosSecure from '../../../api/axiosSecure';
-const RoomDataRow = ({ room }) => {
+const RoomDataRow = ({ room, refetch }) => {
  
   const handleDelete = _id=>{
    
@@ -27,6 +27,7 @@ const RoomDataRow = ({ room }) => {
               text: "Your file has been deleted.",
               icon: "success"
             });
+            refetch()
               }
             })
           } else if (
